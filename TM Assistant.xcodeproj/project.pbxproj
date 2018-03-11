@@ -7,14 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8563EA192055AAC600071FCB /* Corporation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8563EA182055AAC600071FCB /* Corporation.swift */; };
 		857E28C12039111500A8E2F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857E28C02039111500A8E2F5 /* AppDelegate.swift */; };
-		857E28C32039111500A8E2F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857E28C22039111500A8E2F5 /* ViewController.swift */; };
+		857E28C32039111500A8E2F5 /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857E28C22039111500A8E2F5 /* ResourceViewController.swift */; };
 		857E28C62039111500A8E2F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857E28C42039111500A8E2F5 /* Main.storyboard */; };
 		857E28C92039111500A8E2F5 /* TM_Assistant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 857E28C72039111500A8E2F5 /* TM_Assistant.xcdatamodeld */; };
 		857E28CB2039111500A8E2F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 857E28CA2039111500A8E2F5 /* Assets.xcassets */; };
 		857E28CE2039111500A8E2F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857E28CC2039111500A8E2F5 /* LaunchScreen.storyboard */; };
 		857E28D92039111500A8E2F5 /* TM_AssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857E28D82039111500A8E2F5 /* TM_AssistantTests.swift */; };
 		857E28E42039111500A8E2F5 /* TM_AssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857E28E32039111500A8E2F5 /* TM_AssistantUITests.swift */; };
+		85F7BB752039EB9200DC9F6C /* TMAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7BB742039EB9200DC9F6C /* TMAssistant.swift */; };
+		85F7BB772039ED6500DC9F6C /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7BB762039ED6500DC9F6C /* GameState.swift */; };
+		85F7BB792039F17800DC9F6C /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7BB782039F17800DC9F6C /* Resource.swift */; };
+		85F7BB7D203A3FBD00DC9F6C /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7BB7C203A3FBD00DC9F6C /* CalculatorViewController.swift */; };
+		85F7BB7F203A428300DC9F6C /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7BB7E203A428300DC9F6C /* Segues.swift */; };
+		85FC44CA20547CBF00FA475A /* VariantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FC44C920547CBF00FA475A /* VariantViewController.swift */; };
+		85FC44CC205481EE00FA475A /* CorporationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FC44CB205481EE00FA475A /* CorporationViewController.swift */; };
+		85FC44CE20548B9B00FA475A /* CorporationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FC44CD20548B9B00FA475A /* CorporationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8563EA182055AAC600071FCB /* Corporation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corporation.swift; sourceTree = "<group>"; };
 		857E28BD2039111500A8E2F5 /* TM Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TM Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		857E28C02039111500A8E2F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		857E28C22039111500A8E2F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		857E28C22039111500A8E2F5 /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
 		857E28C52039111500A8E2F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		857E28C82039111500A8E2F5 /* TM_Assistant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TM_Assistant.xcdatamodel; sourceTree = "<group>"; };
 		857E28CA2039111500A8E2F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +59,14 @@
 		857E28DF2039111500A8E2F5 /* TM AssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TM AssistantUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		857E28E32039111500A8E2F5 /* TM_AssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TM_AssistantUITests.swift; sourceTree = "<group>"; };
 		857E28E52039111500A8E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85F7BB742039EB9200DC9F6C /* TMAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMAssistant.swift; sourceTree = "<group>"; };
+		85F7BB762039ED6500DC9F6C /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		85F7BB782039F17800DC9F6C /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		85F7BB7C203A3FBD00DC9F6C /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		85F7BB7E203A428300DC9F6C /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		85FC44C920547CBF00FA475A /* VariantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantViewController.swift; sourceTree = "<group>"; };
+		85FC44CB205481EE00FA475A /* CorporationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorporationViewController.swift; sourceTree = "<group>"; };
+		85FC44CD20548B9B00FA475A /* CorporationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorporationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +118,17 @@
 			isa = PBXGroup;
 			children = (
 				857E28C02039111500A8E2F5 /* AppDelegate.swift */,
-				857E28C22039111500A8E2F5 /* ViewController.swift */,
+				857E28C22039111500A8E2F5 /* ResourceViewController.swift */,
+				85F7BB7C203A3FBD00DC9F6C /* CalculatorViewController.swift */,
+				85FC44C920547CBF00FA475A /* VariantViewController.swift */,
+				85FC44CB205481EE00FA475A /* CorporationViewController.swift */,
+				85FC44CD20548B9B00FA475A /* CorporationTableViewCell.swift */,
+				85F7BB7E203A428300DC9F6C /* Segues.swift */,
 				857E28C42039111500A8E2F5 /* Main.storyboard */,
+				85F7BB742039EB9200DC9F6C /* TMAssistant.swift */,
+				85F7BB762039ED6500DC9F6C /* GameState.swift */,
+				8563EA182055AAC600071FCB /* Corporation.swift */,
+				85F7BB782039F17800DC9F6C /* Resource.swift */,
 				857E28CA2039111500A8E2F5 /* Assets.xcassets */,
 				857E28CC2039111500A8E2F5 /* LaunchScreen.storyboard */,
 				857E28CF2039111500A8E2F5 /* Info.plist */,
@@ -262,9 +289,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				857E28C32039111500A8E2F5 /* ViewController.swift in Sources */,
+				857E28C32039111500A8E2F5 /* ResourceViewController.swift in Sources */,
 				857E28C12039111500A8E2F5 /* AppDelegate.swift in Sources */,
+				85F7BB772039ED6500DC9F6C /* GameState.swift in Sources */,
+				85FC44CC205481EE00FA475A /* CorporationViewController.swift in Sources */,
+				85F7BB7F203A428300DC9F6C /* Segues.swift in Sources */,
+				85FC44CA20547CBF00FA475A /* VariantViewController.swift in Sources */,
+				85FC44CE20548B9B00FA475A /* CorporationTableViewCell.swift in Sources */,
+				85F7BB792039F17800DC9F6C /* Resource.swift in Sources */,
+				8563EA192055AAC600071FCB /* Corporation.swift in Sources */,
 				857E28C92039111500A8E2F5 /* TM_Assistant.xcdatamodeld in Sources */,
+				85F7BB7D203A3FBD00DC9F6C /* CalculatorViewController.swift in Sources */,
+				85F7BB752039EB9200DC9F6C /* TMAssistant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 786U7TA83U;
 				INFOPLIST_FILE = "TM Assistant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "axy.TM-Assistant";
@@ -445,6 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 786U7TA83U;
 				INFOPLIST_FILE = "TM Assistant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "axy.TM-Assistant";
