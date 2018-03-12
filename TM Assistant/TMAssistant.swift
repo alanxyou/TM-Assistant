@@ -36,9 +36,10 @@ class TMAssistant {
     var gameVariant = ""
     var corporation = ""
     
+    var history = [HistoryItem]()
     var currentGameState = GameState()
     var previousGameState: GameState?
-    
+
     func undoLastAction() {
         currentGameState = previousGameState!
         previousGameState = nil
@@ -98,6 +99,8 @@ class TMAssistant {
         currentGameState.resources["energy"]?.total += adjustments!["et"]!
         currentGameState.resources["heat"]?.accumulationAmount += adjustments!["ha"]!
         currentGameState.resources["heat"]?.total += adjustments!["ht"]!
+
+        history.append(HistoryItem(type: "GS", amount: 0, gameState: currentGameState))
     }
     
     func advanceGeneration() {
@@ -136,6 +139,33 @@ class TMAssistant {
         if (amount != 0) {
             previousGameState = currentGameState
             currentGameState.resources[resourceName]!.total += amount
+        }
+    }
+    
+    func addActionToHistory(forAction action: String, byAmount amount: Int) {
+        if history.count == 0 {
+            history.append(HistoryItem(type: action, amount: amount, gameState: currentGameState))
+        }
+        else {
+            if action.last == "T" || action.last == "G" {
+                history.append(HistoryItem(type: action, amount: amount, gameState: currentGameState))
+            }
+            else {
+                let lastHistoryItem = history.last
+                
+                if action != lastHistoryItem!.type {
+                    history.append(HistoryItem(type: action, amount: amount, gameState: currentGameState))
+                }
+                else {
+                    if (amount * lastHistoryItem!.amount) < 0 {
+                        history.append(HistoryItem(type: action, amount: amount, gameState: currentGameState))
+                    }
+                    else {
+                        history.removeLast()
+                        history.append(HistoryItem(type: action, amount: (amount + lastHistoryItem!.amount), gameState: currentGameState))
+                    }
+                }
+            }
         }
     }
 }

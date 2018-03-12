@@ -16,6 +16,10 @@
 		857E28CE2039111500A8E2F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857E28CC2039111500A8E2F5 /* LaunchScreen.storyboard */; };
 		857E28D92039111500A8E2F5 /* TM_AssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857E28D82039111500A8E2F5 /* TM_AssistantTests.swift */; };
 		857E28E42039111500A8E2F5 /* TM_AssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857E28E32039111500A8E2F5 /* TM_AssistantUITests.swift */; };
+		85B4DBDA2055FB4400A65F6E /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4DBD92055FB4400A65F6E /* HistoryItem.swift */; };
+		85B4DBDC2056247400A65F6E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4DBDB2056247400A65F6E /* HistoryViewController.swift */; };
+		85B4DBDE205624EB00A65F6E /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4DBDD205624EB00A65F6E /* HistoryTableViewCell.swift */; };
+		85B4DBE02056682800A65F6E /* GameStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4DBDF2056682800A65F6E /* GameStateViewController.swift */; };
 		85F7BB752039EB9200DC9F6C /* TMAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7BB742039EB9200DC9F6C /* TMAssistant.swift */; };
 		85F7BB772039ED6500DC9F6C /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7BB762039ED6500DC9F6C /* GameState.swift */; };
 		85F7BB792039F17800DC9F6C /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7BB782039F17800DC9F6C /* Resource.swift */; };
@@ -59,6 +63,10 @@
 		857E28DF2039111500A8E2F5 /* TM AssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TM AssistantUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		857E28E32039111500A8E2F5 /* TM_AssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TM_AssistantUITests.swift; sourceTree = "<group>"; };
 		857E28E52039111500A8E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85B4DBD92055FB4400A65F6E /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		85B4DBDB2056247400A65F6E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		85B4DBDD205624EB00A65F6E /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		85B4DBDF2056682800A65F6E /* GameStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateViewController.swift; sourceTree = "<group>"; };
 		85F7BB742039EB9200DC9F6C /* TMAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMAssistant.swift; sourceTree = "<group>"; };
 		85F7BB762039ED6500DC9F6C /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		85F7BB782039F17800DC9F6C /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
@@ -120,12 +128,16 @@
 				857E28C02039111500A8E2F5 /* AppDelegate.swift */,
 				857E28C22039111500A8E2F5 /* ResourceViewController.swift */,
 				85F7BB7C203A3FBD00DC9F6C /* CalculatorViewController.swift */,
+				85B4DBDB2056247400A65F6E /* HistoryViewController.swift */,
+				85B4DBDD205624EB00A65F6E /* HistoryTableViewCell.swift */,
+				85B4DBDF2056682800A65F6E /* GameStateViewController.swift */,
 				85FC44C920547CBF00FA475A /* VariantViewController.swift */,
 				85FC44CB205481EE00FA475A /* CorporationViewController.swift */,
 				85FC44CD20548B9B00FA475A /* CorporationTableViewCell.swift */,
 				85F7BB7E203A428300DC9F6C /* Segues.swift */,
 				857E28C42039111500A8E2F5 /* Main.storyboard */,
 				85F7BB742039EB9200DC9F6C /* TMAssistant.swift */,
+				85B4DBD92055FB4400A65F6E /* HistoryItem.swift */,
 				85F7BB762039ED6500DC9F6C /* GameState.swift */,
 				8563EA182055AAC600071FCB /* Corporation.swift */,
 				85F7BB782039F17800DC9F6C /* Resource.swift */,
@@ -291,15 +303,19 @@
 			files = (
 				857E28C32039111500A8E2F5 /* ResourceViewController.swift in Sources */,
 				857E28C12039111500A8E2F5 /* AppDelegate.swift in Sources */,
+				85B4DBE02056682800A65F6E /* GameStateViewController.swift in Sources */,
 				85F7BB772039ED6500DC9F6C /* GameState.swift in Sources */,
 				85FC44CC205481EE00FA475A /* CorporationViewController.swift in Sources */,
 				85F7BB7F203A428300DC9F6C /* Segues.swift in Sources */,
+				85B4DBDC2056247400A65F6E /* HistoryViewController.swift in Sources */,
 				85FC44CA20547CBF00FA475A /* VariantViewController.swift in Sources */,
 				85FC44CE20548B9B00FA475A /* CorporationTableViewCell.swift in Sources */,
 				85F7BB792039F17800DC9F6C /* Resource.swift in Sources */,
+				85B4DBDE205624EB00A65F6E /* HistoryTableViewCell.swift in Sources */,
 				8563EA192055AAC600071FCB /* Corporation.swift in Sources */,
 				857E28C92039111500A8E2F5 /* TM_Assistant.xcdatamodeld in Sources */,
 				85F7BB7D203A3FBD00DC9F6C /* CalculatorViewController.swift in Sources */,
+				85B4DBDA2055FB4400A65F6E /* HistoryItem.swift in Sources */,
 				85F7BB752039EB9200DC9F6C /* TMAssistant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

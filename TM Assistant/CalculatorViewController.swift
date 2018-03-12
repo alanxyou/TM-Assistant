@@ -46,6 +46,7 @@ class CalculatorViewController: UIViewController {
     
     let resourceColors = ["megacredit":#colorLiteral(red: 0.9912725091, green: 0.9177541733, blue: 0.07277751714, alpha: 0.66), "steel":#colorLiteral(red: 0.6587831974, green: 0.4729810357, blue: 0.3032491505, alpha: 0.66), "titanium":#colorLiteral(red: 0.35136953, green: 0.3611224294, blue: 0.3608824611, alpha: 0.66), "plant":#colorLiteral(red: 0.4713600874, green: 0.720990479, blue: 0.2673010528, alpha: 0.66), "energy":#colorLiteral(red: 0.6016296148, green: 0.22637707, blue: 0.5395048857, alpha: 0.66), "heat":#colorLiteral(red: 0.9051292539, green: 0.3214156032, blue: 0.2258704901, alpha: 0.66)]
     let resourcePlurals = ["megacredit":"megacredits", "steel":"steel", "titanium":"titanium", "plant":"plants", "energy":"energy", "heat":"heat"]
+    let resourceAbbreviations = ["megacredit":"MT", "steel":"ST", "titanium":"TT", "plant":"PT", "energy":"ET", "heat":"HT"]
     
     var adjustmentAmount = "0" {
         didSet {
@@ -79,12 +80,14 @@ class CalculatorViewController: UIViewController {
         
         if (adjustment! <= startingAmount!) {
             assistant!.adjustTotalAmount(for: resourceType!, by: Int(adjustmentAmount)! * -1)
+            assistant?.addActionToHistory(forAction: resourceAbbreviations[resourceType!]!, byAmount: Int(adjustmentAmount)! * -1)
             performSegue(withIdentifier: "segueToMain", sender: self)
         }
     }
     
     @IBAction func gainResources(_ sender: UIButton) {
         assistant!.adjustTotalAmount(for: resourceType!, by: Int(adjustmentAmount)!)
+        assistant?.addActionToHistory(forAction: resourceAbbreviations[resourceType!]!, byAmount: Int(adjustmentAmount)!)
         performSegue(withIdentifier: "segueToMain", sender: self)
     }
 }

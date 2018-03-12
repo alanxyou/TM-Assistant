@@ -10,32 +10,11 @@ import UIKit
 
 class ResourceViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        refreshUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if assistant.previousGameState != nil {
-            undoPossible = true
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     var assistant: TMAssistant = TMAssistant()
-    
-    var undoPossible = false {
-        didSet {
-            undoButton.isEnabled = undoPossible
-        }
-    }
-    
     var calculatorResource: String?
     var calculatorAmount: Int?
+    
+    let generator = UIImpactFeedbackGenerator(style: .light)
     
     @IBOutlet var backgroundView: UIView!
     
@@ -57,7 +36,7 @@ class ResourceViewController: UIViewController {
     @IBOutlet weak var plantAccumulationLabel: UILabel!
     @IBOutlet weak var energyAccumulationLabel: UILabel!
     @IBOutlet weak var heatAccumulationLabel: UILabel!
-
+    
     @IBOutlet weak var megacreditAdjustmentButton: UIButton!
     @IBOutlet weak var steelAdjustmentButton: UIButton!
     @IBOutlet weak var titaniumAdjustmentButton: UIButton!
@@ -65,11 +44,43 @@ class ResourceViewController: UIViewController {
     @IBOutlet weak var energyAdjustmentButton: UIButton!
     @IBOutlet weak var heatAdjustmentButton: UIButton!
     
-    @IBOutlet weak var undoButton: UIButton!
-    @IBOutlet weak var toggleBackgroundButton: UIButton!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        refreshUI()
+    }
     
-    let generator = UIImpactFeedbackGenerator(style: .light)
+    override func viewDidAppear(_ animated: Bool) {
+        if assistant.previousGameState != nil {
+            undoPossible = true
+        }
+    }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    var undoPossible = false {
+        didSet {
+//            undoButton.isEnabled = undoPossible
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let resourceName = calculatorResource
+        let startingAmount = calculatorAmount
+        
+        if let destinationViewController = segue.destination as? CalculatorViewController {
+            destinationViewController.resourceType = resourceName
+            destinationViewController.startingAmount = startingAmount
+            destinationViewController.assistant = assistant
+        }
+        
+        if let destinationViewController = segue.destination as? HistoryViewController {
+            destinationViewController.assistant = assistant
+        }
+    }
+
     func refreshUI() {
         generator.prepare()
         
@@ -93,101 +104,6 @@ class ResourceViewController: UIViewController {
         generator.impactOccurred()
     }
     
-    @IBAction func toggleDarkMode(_ sender: UIButton) {
-//        if backgroundView.backgroundColor == UIColor.white {
-//            backgroundView.backgroundColor = UIColor.black
-//            toggleBackgroundButton.setTitleColor(UIColor.white, for: .normal)
-//
-//            terraformingRatingBannerLabel.textColor = UIColor(red:1.00, green:0.78, blue:0.60, alpha:1.0)
-//            terraformingRatingBannerLabel.backgroundColor = UIColor.black
-//            terraformingRatingBannerLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-//            generationBannerLabel.textColor = UIColor.white
-//            generationBannerLabel.backgroundColor = UIColor.black
-//            generationBannerLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-//            megacreditBannerLabel.textColor = UIColor(red:1.00, green:0.96, blue:0.49, alpha:1.0)
-//            megacreditBannerLabel.backgroundColor = UIColor.black
-//            megacreditBannerLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-//            steelBannerLabel.textColor = UIColor(red:1.00, green:0.88, blue:0.75, alpha:1.0)
-//            steelBannerLabel.backgroundColor = UIColor.black
-//            steelBannerLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-//            titaniumBannerLabel.textColor = UIColor(red:0.83, green:0.84, blue:0.85, alpha:1.0)
-//            titaniumBannerLabel.backgroundColor = UIColor.black
-//            titaniumBannerLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-//            plantBannerLabel.textColor = UIColor(red:0.76, green:0.91, blue:0.62, alpha:1.0)
-//            plantBannerLabel.backgroundColor = UIColor.black
-//            plantBannerLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-//            energyBannerLabel.textColor = UIColor(red:1.00, green:0.72, blue:0.98, alpha:1.0)
-//            energyBannerLabel.backgroundColor = UIColor.black
-//            energyBannerLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-//            heatBannerLabel.textColor = UIColor(red:1.00, green:0.65, blue:0.58, alpha:1.0)
-//            heatBannerLabel.backgroundColor = UIColor.black
-//            heatBannerLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-//
-//            terraformingRatingLabel.textColor = UIColor.white
-//            generationLabel.textColor = UIColor.white
-//
-//            megacreditAccumulationLabel.textColor = UIColor.white
-//            steelAccumulationLabel.textColor = UIColor.white
-//            titaniumAccumulationLabel.textColor = UIColor.white
-//            plantAccumulationLabel.textColor = UIColor.white
-//            energyAccumulationLabel.textColor = UIColor.white
-//            heatAccumulationLabel.textColor = UIColor.white
-//
-//            megacreditTotalLabel.textColor = UIColor.white
-//            steelTotalLabel.textColor = UIColor.white
-//            titaniumTotalLabel.textColor = UIColor.white
-//            plantTotalLabel.textColor = UIColor.white
-//            energyTotalLabel.textColor = UIColor.white
-//            heatTotalLabel.textColor = UIColor.white
-//        }
-//        else if backgroundView.backgroundColor == UIColor.black {
-//            backgroundView.backgroundColor = UIColor.white
-//            toggleBackgroundButton.setTitleColor(UIColor.black, for: .normal)
-//
-//            terraformingRatingBannerLabel.textColor = UIColor.black
-//            terraformingRatingBannerLabel.backgroundColor = #colorLiteral(red: 0.9177063107, green: 0.5506290197, blue: 0.2627521455, alpha: 0.66)
-//            terraformingRatingBannerLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .semibold)
-//            generationBannerLabel.textColor = UIColor.black
-//            generationBannerLabel.backgroundColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
-//            generationBannerLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-//            megacreditBannerLabel.textColor = UIColor.black
-//            megacreditBannerLabel.backgroundColor = #colorLiteral(red: 0.9912725091, green: 0.9177541733, blue: 0.07277751714, alpha: 0.66)
-//            megacreditBannerLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-//            steelBannerLabel.textColor = UIColor.black
-//            steelBannerLabel.backgroundColor = #colorLiteral(red: 0.6587831974, green: 0.4729810357, blue: 0.3032491505, alpha: 0.66)
-//            steelBannerLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-//            titaniumBannerLabel.textColor = UIColor.black
-//            titaniumBannerLabel.backgroundColor = #colorLiteral(red: 0.35136953, green: 0.3611224294, blue: 0.3608824611, alpha: 0.66)
-//            titaniumBannerLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-//            plantBannerLabel.textColor = UIColor.black
-//            plantBannerLabel.backgroundColor = #colorLiteral(red: 0.4713600874, green: 0.720990479, blue: 0.2673010528, alpha: 0.66)
-//            plantBannerLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-//            energyBannerLabel.textColor = UIColor.black
-//            energyBannerLabel.backgroundColor = #colorLiteral(red: 0.6016296148, green: 0.22637707, blue: 0.5395048857, alpha: 0.66)
-//            energyBannerLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-//            heatBannerLabel.textColor = UIColor.black
-//            heatBannerLabel.backgroundColor = #colorLiteral(red: 0.9051292539, green: 0.3214156032, blue: 0.2258704901, alpha: 0.66)
-//            heatBannerLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-//
-//            terraformingRatingLabel.textColor = UIColor.black
-//            generationLabel.textColor = UIColor.black
-//
-//            megacreditAccumulationLabel.textColor = UIColor.black
-//            steelAccumulationLabel.textColor = UIColor.black
-//            titaniumAccumulationLabel.textColor = UIColor.black
-//            plantAccumulationLabel.textColor = UIColor.black
-//            energyAccumulationLabel.textColor = UIColor.black
-//            heatAccumulationLabel.textColor = UIColor.black
-//
-//            megacreditTotalLabel.textColor = UIColor.black
-//            steelTotalLabel.textColor = UIColor.black
-//            titaniumTotalLabel.textColor = UIColor.black
-//            plantTotalLabel.textColor = UIColor.black
-//            energyTotalLabel.textColor = UIColor.black
-//            heatTotalLabel.textColor = UIColor.black
-//        }
-    }
-    
     @IBAction func undoLastAction(_ sender: UIButton) {
         if undoPossible {
             assistant.undoLastAction()
@@ -209,6 +125,8 @@ class ResourceViewController: UIViewController {
     
     @IBAction func advanceGeneration(_ sender: UIButton) {
         assistant.advanceGeneration()
+        assistant.addActionToHistory(forAction: "AG", byAmount: assistant.currentGameState.generation)
+        
         refreshUI()
         undoPossible = true
     }
@@ -216,6 +134,8 @@ class ResourceViewController: UIViewController {
     @IBAction func decrementTerraformingRating(_ sender: UIButton) {
         if assistant.currentGameState.terraformingRating > 0 {
             assistant.adjustTerraformingRating(by: -1)
+            assistant.addActionToHistory(forAction: "TR", byAmount: -1)
+            
             refreshUI()
             undoPossible = true
         }
@@ -223,6 +143,8 @@ class ResourceViewController: UIViewController {
     
     @IBAction func incrementTerraformingRating(_ sender: UIButton) {
         assistant.adjustTerraformingRating(by: 1)
+        assistant.addActionToHistory(forAction: "TR", byAmount: 1)
+        
         refreshUI()
         undoPossible = true
     }
@@ -230,6 +152,8 @@ class ResourceViewController: UIViewController {
     @IBAction func decrementMegacreditAccumulationAmount(_ sender: UIButton) {
         if assistant.currentGameState.resources["megacredit"]!.accumulationAmount > -5 {
             assistant.adjustAccumulationAmount(for: "megacredit", by: -1)
+            assistant.addActionToHistory(forAction: "MA", byAmount: -1)
+            
             refreshUI()
             undoPossible = true
         }
@@ -237,6 +161,8 @@ class ResourceViewController: UIViewController {
 
     @IBAction func incrementMegacreditAccumulationAmount(_ sender: UIButton) {
         assistant.adjustAccumulationAmount(for: "megacredit", by: 1)
+        assistant.addActionToHistory(forAction: "MA", byAmount: 1)
+        
         refreshUI()
         undoPossible = true
     }
@@ -244,6 +170,8 @@ class ResourceViewController: UIViewController {
     @IBAction func decrementSteelAccumulationAmount(_ sender: UIButton) {
         if assistant.currentGameState.resources["steel"]!.accumulationAmount > 0 {
             assistant.adjustAccumulationAmount(for: "steel", by: -1)
+            assistant.addActionToHistory(forAction: "SA", byAmount: -1)
+            
             refreshUI()
             undoPossible = true
         }
@@ -251,6 +179,8 @@ class ResourceViewController: UIViewController {
     
     @IBAction func incrementSteelAccumulationAmount(_ sender: UIButton) {
         assistant.adjustAccumulationAmount(for: "steel", by: 1)
+        assistant.addActionToHistory(forAction: "SA", byAmount: 1)
+        
         refreshUI()
         undoPossible = true
     }
@@ -258,6 +188,8 @@ class ResourceViewController: UIViewController {
     @IBAction func decrementTitaniumAccumulationAmount(_ sender: UIButton) {
         if assistant.currentGameState.resources["titanium"]!.accumulationAmount > 0 {
             assistant.adjustAccumulationAmount(for: "titanium", by: -1)
+            assistant.addActionToHistory(forAction: "TA", byAmount: -1)
+            
             refreshUI()
             undoPossible = true
         }
@@ -265,6 +197,8 @@ class ResourceViewController: UIViewController {
     
     @IBAction func incrementTitaniumAccumulationAmount(_ sender: UIButton) {
         assistant.adjustAccumulationAmount(for: "titanium", by: 1)
+        assistant.addActionToHistory(forAction: "TA", byAmount: 1)
+        
         refreshUI()
         undoPossible = true
     }
@@ -272,6 +206,8 @@ class ResourceViewController: UIViewController {
     @IBAction func decrementPlantAccumulationAmount(_ sender: UIButton) {
         if assistant.currentGameState.resources["plant"]!.accumulationAmount > 0 {
             assistant.adjustAccumulationAmount(for: "plant", by: -1)
+            assistant.addActionToHistory(forAction: "PA", byAmount: -1)
+            
             refreshUI()
             undoPossible = true
         }
@@ -279,6 +215,8 @@ class ResourceViewController: UIViewController {
     
     @IBAction func incrementPlantAccumulationAmount(_ sender: UIButton) {
         assistant.adjustAccumulationAmount(for: "plant", by: 1)
+        assistant.addActionToHistory(forAction: "PA", byAmount: 1)
+        
         refreshUI()
         undoPossible = true
     }
@@ -286,6 +224,8 @@ class ResourceViewController: UIViewController {
     @IBAction func decrementEnergyAccumulationAmount(_ sender: UIButton) {
         if assistant.currentGameState.resources["energy"]!.accumulationAmount > 0 {
             assistant.adjustAccumulationAmount(for: "energy", by: -1)
+            assistant.addActionToHistory(forAction: "EA", byAmount: -1)
+            
             refreshUI()
             undoPossible = true
         }
@@ -293,6 +233,8 @@ class ResourceViewController: UIViewController {
     
     @IBAction func incrementEnergyAccumulationAmount(_ sender: UIButton) {
         assistant.adjustAccumulationAmount(for: "energy", by: 1)
+        assistant.addActionToHistory(forAction: "EA", byAmount: 1)
+        
         refreshUI()
         undoPossible = true
     }
@@ -300,6 +242,8 @@ class ResourceViewController: UIViewController {
     @IBAction func decrementHeatAccumulationAmount(_ sender: UIButton) {
         if assistant.currentGameState.resources["heat"]!.accumulationAmount > 0 {
             assistant.adjustAccumulationAmount(for: "heat", by: -1)
+            assistant.addActionToHistory(forAction: "HA", byAmount: -1)
+            
             refreshUI()
             undoPossible = true
         }
@@ -307,6 +251,8 @@ class ResourceViewController: UIViewController {
     
     @IBAction func incrementHeatAccumulationAmount(_ sender: UIButton) {
         assistant.adjustAccumulationAmount(for: "heat", by: 1)
+        assistant.addActionToHistory(forAction: "HA", byAmount: 1)
+        
         refreshUI()
         undoPossible = true
     }
@@ -339,16 +285,5 @@ class ResourceViewController: UIViewController {
     @IBAction func modifyHeat(_ sender: UIButton) {
         calculatorResource = "heat"
         calculatorAmount = assistant.currentGameState.resources["heat"]!.total
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let resourceName = calculatorResource
-        let startingAmount = calculatorAmount
-        
-        if let destinationViewController = segue.destination as? CalculatorViewController {
-            destinationViewController.resourceType = resourceName
-            destinationViewController.startingAmount = startingAmount
-            destinationViewController.assistant = assistant
-        }
     }
 }

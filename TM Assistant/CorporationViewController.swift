@@ -42,8 +42,6 @@ class CorporationViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         assistant.configureCorporation(forCorporation: assistant.corporationList[indexPath.row])
         
-        print("You tapped cell number \(indexPath.row).")
-        
         performSegue(withIdentifier: "SegueToMain", sender: self)
     }
     
